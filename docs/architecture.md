@@ -50,7 +50,7 @@ exception is code that runs **on the person's own machine** (the IMAP
 bridge, D5).
 
 **D2 — One mail-source port; everything above it is source-blind.**
-Gmail, JMAP and IMAP are adapters in `packages/source-*` that yield the
+Gmail, JMAP and IMAP are adapters in `lib/sources/*` that yield the
 same `MailMessage` (§5). The store, the agent and the UI never branch on
 the source. *Rules out:* Gmail-specific columns or label logic outside its
 adapter.
@@ -108,10 +108,16 @@ now steers new static sites to, and what imado-status runs on), built from
 apex and `www` are custom domains on the old Pages project `myinboxreport`
 (git-connected to the old repo). At PR 1's launch the two domains move
 from that project to the Worker — detach, attach, seconds apart — and the
-Pages project is deleted after the new site has served for a day. A bun workspace:
-`apps/web`, `packages/core`, `packages/store-sqlite`,
-`packages/source-gmail`, `packages/source-jmap`, later
-`packages/source-imap` and `apps/bridge`.
+Pages project is deleted after the new site has served for a day.
+
+One Next.js app, not a workspace. The boundaries are folders, held by a
+lint rule rather than by packages: `lib/core` (the port, `MailMessage`,
+the normalise helpers, the agent's rules — no React, no Next, no provider
+SDK), `lib/sources/{gmail,jmap}`, `lib/store`, and `app/` + `components/`
+above them. Imports point inward: `lib/core` imports nothing of ours;
+`lib/sources/*` and `lib/store` import only `lib/core`. The IMAP bridge
+(D5), when it comes, is the first thing that needs to be its own package;
+that is when this becomes a workspace or the bridge its own repository.
 
 **D11 — The name is MyInboxReport; the look is imado's.** imado appears in
 words only as "Made by imado" in the footer and on the about/privacy
@@ -158,7 +164,7 @@ PR 1.
 ## 5. Domain — the port
 
 ```ts
-// packages/core/src/source.ts
+// lib/core/source.ts
 export interface MailMessage {
   providerId: string;           // Gmail id | JMAP Email id | IMAP "uidvalidity:uid"
   threadKey: string | null;
@@ -278,13 +284,13 @@ Each PR ships to myinboxreport.com on its own.
 | # | PR | Class | Depends on |
 | - | -- | ----- | ---------- |
 | 1 | Site: landing, privacy, terms, "Made by imado", deploy; mockup first. Unblocks Google verification (needs a homepage and privacy policy on a verified domain) | site | — |
-| 2 | Workspace, `core` (port, `MailMessage`, normalise helpers), `store-sqlite` (worker, system tables), fake source, tests | foundation | 1 |
+| 2 | `lib/core` (port, `MailMessage`, normalise helpers) with its import-boundary lint rule, `lib/store` (worker, system tables), a fake source, tests | foundation | 1 |
 | 3 | Gmail source; Connect and Sync screens | mail | 2 |
 | 4 | JMAP source (developed against a local Stalwart server, probed against Fastmail) | mail | 2 |
 | 5 | Models (Ollama, Anthropic key) and the extraction queue | agent | 2 |
 | 6 | Chat: explore, design, `run_sql`, `render_chart` | agent | 5 |
 | 7 | Dashboard pins | agent | 6 |
-| — | IMAP: `source-imap` + local bridge | mail | after 7 |
+| — | IMAP: `lib/sources/imap` + the local bridge (its own package) | mail | after 7 |
 | — | imado JMAP endpoint — a task in imado-platform, not here | — | imado's own plan |
 
 ## 10. What v1 and v2 learned — do not re-learn

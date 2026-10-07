@@ -1,0 +1,10 @@
+// A Worker that only serves the static export (docs/architecture.md D10).
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "myinboxreport",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page"
+  }
+}

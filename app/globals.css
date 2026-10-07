@@ -1,0 +1,354 @@
+/*
+ * imado's design tokens, copied from imado-platform
+ * packages/ui/src/styles/globals.css at 409a0a7 (docs/architecture.md D12).
+ * The repositories share no code; keep this in step by hand.
+ */
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --font-heading: var(--font-heading-base);
+  --color-sidebar-ring: var(--sidebar-ring);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar: var(--sidebar);
+  --color-chart-5: var(--chart-5);
+  --color-chart-4: var(--chart-4);
+  --color-chart-3: var(--chart-3);
+  --color-chart-2: var(--chart-2);
+  --color-chart-1: var(--chart-1);
+  --color-ring: var(--ring);
+  --color-input: var(--input);
+  --color-border: var(--border);
+  --color-destructive: var(--destructive);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-accent: var(--accent);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-muted: var(--muted);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-secondary: var(--secondary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-primary: var(--primary);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-popover: var(--popover);
+  --color-card-foreground: var(--card-foreground);
+  --color-card: var(--card);
+  --color-foreground: var(--foreground);
+  --color-background: var(--background);
+  --radius-sm: calc(var(--radius) * 0.6);
+  --radius-md: calc(var(--radius) * 0.8);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) * 1.4);
+  --radius-2xl: calc(var(--radius) * 1.8);
+  --radius-3xl: calc(var(--radius) * 2.2);
+  --radius-4xl: calc(var(--radius) * 2.6);
+  --font-sans: var(--font-sans-base);
+  --font-mono: var(--font-mono-base);
+}
+
+:root {
+  --background: oklch(1 0 0);
+  --foreground: oklch(0.145 0 0);
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.145 0 0);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.145 0 0);
+  --primary: #0d6efd;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.967 0.001 286.375);
+  --secondary-foreground: oklch(0.21 0.006 285.885);
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.52 0 0);
+  --accent: oklch(0.97 0 0);
+  --accent-foreground: oklch(0.205 0 0);
+  --destructive: oklch(0.577 0.245 27.325);
+  --border: oklch(0.922 0 0);
+  --input: oklch(0.922 0 0);
+  --ring: oklch(0.708 0 0);
+  /* Brand blue, hue 258 — same family as --primary. The previous
+     * scale was leftover emerald (hue ~164) from the first theme. */
+  --chart-1: oklch(0.845 0.143 258);
+  --chart-2: oklch(0.696 0.17 258);
+  --chart-3: oklch(0.596 0.145 258);
+  --chart-4: oklch(0.508 0.118 258);
+  --chart-5: oklch(0.432 0.095 258);
+  --radius: 0.625rem;
+  --sidebar: oklch(0.985 0 0);
+  --sidebar-foreground: oklch(0.145 0 0);
+  --sidebar-primary: #0d6efd;
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.97 0 0);
+  --sidebar-accent-foreground: oklch(0.205 0 0);
+  --sidebar-border: oklch(0.922 0 0);
+  --sidebar-ring: oklch(0.708 0 0);
+}
+
+.dark {
+  --background: oklch(0.145 0 0);
+  --foreground: oklch(0.985 0 0);
+  --card: oklch(0.205 0 0);
+  --card-foreground: oklch(0.985 0 0);
+  --popover: oklch(0.205 0 0);
+  --popover-foreground: oklch(0.985 0 0);
+  --primary: #0d6efd;
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.274 0.006 286.033);
+  --secondary-foreground: oklch(0.985 0 0);
+  --muted: oklch(0.269 0 0);
+  --muted-foreground: oklch(0.708 0 0);
+  --accent: oklch(0.269 0 0);
+  --accent-foreground: oklch(0.985 0 0);
+  --destructive: oklch(0.704 0.191 22.216);
+  --border: oklch(1 0 0 / 10%);
+  --input: oklch(1 0 0 / 15%);
+  --ring: oklch(0.556 0 0);
+  --chart-1: oklch(0.845 0.143 258);
+  --chart-2: oklch(0.696 0.17 258);
+  --chart-3: oklch(0.596 0.145 258);
+  --chart-4: oklch(0.508 0.118 258);
+  --chart-5: oklch(0.432 0.095 258);
+  --sidebar: oklch(0.205 0 0);
+  --sidebar-foreground: oklch(0.985 0 0);
+  --sidebar-primary: #0d6efd;
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.269 0 0);
+  --sidebar-accent-foreground: oklch(0.985 0 0);
+  --sidebar-border: oklch(1 0 0 / 10%);
+  --sidebar-ring: oklch(0.556 0 0);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+  html {
+    @apply font-sans;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+ * imado — marketing surface tokens
+ * Kept in a separate block so the shadcn CLI can keep managing the region above.
+ * ------------------------------------------------------------------------- */
+
+/*
+ * Scrollbars, thin and in the theme's ink (owner, 2026-09-17): a quiet
+ * thumb that reads as chrome in both themes, never the brand blue — colour
+ * is spent on the action, not on the rail (design.md, Colour). The
+ * `scrollbar-*` properties cover Firefox and Chromium 121+; the pseudo
+ * elements cover older WebKit. A sandboxed message frame styles its own.
+ */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: color-mix(in oklch, var(--foreground) 20%, transparent)
+    transparent;
+}
+*::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+*::-webkit-scrollbar-track,
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+*::-webkit-scrollbar-thumb {
+  background: color-mix(in oklch, var(--foreground) 20%, transparent);
+  border-radius: 4px;
+}
+*::-webkit-scrollbar-thumb:hover {
+  background: color-mix(in oklch, var(--foreground) 35%, transparent);
+}
+
+:root {
+  /* Brand blue used as text/icon ink. --primary is 4.5:1 on white, which is
+     * AA but only just; this darker one clears it with room, including over a
+     * tinted (primary/10) chip. Matches --brand-secondary. */
+  --primary-accent: #0a58ca;
+
+  /* --- Status -----------------------------------------------------------
+     * Four states, and deliberately only four: something worked, something is
+     * in progress, something is waiting on a step before it, something failed.
+     * Every state word in the product maps onto one of them — Ready, Setting
+     * up, Locked, Suspended — so a fifth colour means a fifth *meaning*, which
+     * is an argument to have rather than a hex to add.
+     *
+     * They exist because the brand colour was doing this job: a ready domain
+     * rendered in --primary-accent made "verified" and "this is an imado
+     * thing" the same signal (design.md, Colour). Brand is identity; these are
+     * state, and the two must never be the same ink.
+     *
+     * Each is a pair. The `-fg` is the word — always present, because colour
+     * alone is not a status (ux.md) — and the tint is the ground behind it,
+     * carried as an alpha so one value works over the page, a card, and a row
+     * without three variants. Every `-fg` clears 4.5:1 on its own theme's
+     * background, checked the way --primary-accent was.
+     */
+  --status-ready-fg: #0b6b3a;
+  --status-ready-tint: oklch(0.62 0.15 155 / 12%);
+  --status-pending-fg: #8a5300;
+  --status-pending-tint: oklch(0.72 0.15 70 / 16%);
+  --status-inert-fg: #55585f;
+  --status-inert-tint: oklch(0.55 0 0 / 10%);
+  --status-failed-fg: #ad2733;
+  --status-failed-tint: oklch(0.6 0.19 25 / 12%);
+}
+
+.dark {
+  /* Lightened rather than darkened. --primary-accent is darker than --primary
+     * in light mode, and that same value is only 2.2:1 on the dark background —
+     * so dark mode takes the hue the other way. */
+  --primary-accent: #6ea8fe;
+
+  /* The same four meanings, taken the other way for the same reason as
+     * --primary-accent: the light values are tuned to be dark on white, and
+     * every one of them falls under 3:1 on this background. */
+  --status-ready-fg: #5dd39e;
+  --status-ready-tint: oklch(0.78 0.15 158 / 16%);
+  --status-pending-fg: #e8b464;
+  --status-pending-tint: oklch(0.8 0.13 75 / 16%);
+  --status-inert-fg: #a1a5ad;
+  --status-inert-tint: oklch(0.8 0 0 / 12%);
+  --status-failed-fg: #f28b82;
+  --status-failed-tint: oklch(0.72 0.17 20 / 16%);
+}
+
+@theme inline {
+  --color-primary-accent: var(--primary-accent);
+
+  --color-status-ready-fg: var(--status-ready-fg);
+  --color-status-ready-tint: var(--status-ready-tint);
+  --color-status-pending-fg: var(--status-pending-fg);
+  --color-status-pending-tint: var(--status-pending-tint);
+  --color-status-inert-fg: var(--status-inert-fg);
+  --color-status-inert-tint: var(--status-inert-tint);
+  --color-status-failed-fg: var(--status-failed-fg);
+  --color-status-failed-tint: var(--status-failed-tint);
+
+  --animate-rise: rise 0.7s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-fade: fade 0.9s ease both;
+  --animate-drop-in: drop-in 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+  --animate-caret: caret 1.15s steps(1, end) infinite;
+  --animate-sweep: sweep 3.2s ease-in-out infinite;
+
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  @keyframes drop-in {
+    from {
+      opacity: 0;
+      transform: translateY(-0.75rem) scale(0.97);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  @keyframes caret {
+    0%,
+    50% {
+      opacity: 1;
+    }
+    50.01%,
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @keyframes sweep {
+    0%,
+    100% {
+      opacity: 0.35;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+}
+
+/* Crosshair tick used to mark the corners of framed sections. */
+@utility tick {
+  position: absolute;
+  width: 0.5rem;
+  height: 0.5rem;
+  background-image:
+    linear-gradient(var(--color-border) 0 100%),
+    linear-gradient(var(--color-border) 0 100%);
+  background-size:
+    100% 1px,
+    1px 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Scroll-linked reveal.
+ *
+ * The animation is attached only where scroll-driven timelines exist AND the
+ * reader has not asked for reduced motion. Everywhere else the element keeps
+ * its natural, fully visible state — a reveal must never be the reason a
+ * section renders blank. */
+@utility reveal {
+  @supports (animation-timeline: view()) {
+    @media (prefers-reduced-motion: no-preference) {
+      animation: rise linear both;
+      animation-timeline: view();
+      animation-range: entry 5% cover 25%;
+    }
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/*
+ * A sender's avatar carries a hue of its own (design.md, Colour — colour for
+ * identity): the hue comes from the name, on `--avatar-hue`; the lightness
+ * and chroma are fixed here, one pair per theme, so every hue clears the
+ * same contrast against its own ground. The viewer's own mark stays muted.
+ */
+.avatar-hued {
+  background: oklch(0.93 0.05 var(--avatar-hue));
+  color: oklch(0.42 0.12 var(--avatar-hue));
+}
+.dark .avatar-hued {
+  background: oklch(0.31 0.06 var(--avatar-hue));
+  color: oklch(0.86 0.09 var(--avatar-hue));
+}

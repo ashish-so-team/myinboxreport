@@ -32,11 +32,12 @@ bun run lint && bun run typecheck && bun run test && bun run build
 1. **No backend, ever.** No API routes, no server that sees mail, a token,
    or a key. If a feature needs one, the feature is wrong — or it is the
    local bridge, which runs on the person's own machine.
-2. **Dependencies point inward.** `packages/core` knows no framework, no
+2. **Dependencies point inward.** `lib/core` knows no framework, no
    provider, no storage engine. A mail source, a store, a model is an
-   adapter behind a port in `core`.
+   adapter behind a port in `lib/core`. One Next.js app; the folders are
+   the boundaries.
 3. **Every source is the same to everything above the port.** Nothing
-   outside `packages/source-*` knows whether mail came from Gmail, JMAP or
+   outside `lib/sources/*` knows whether mail came from Gmail, JMAP or
    IMAP.
 4. **Mail is hostile input, including to the model.** Message text is data,
    never instructions: the extraction call has no tools, model output never
