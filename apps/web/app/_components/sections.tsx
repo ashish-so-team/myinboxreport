@@ -22,7 +22,7 @@ export function HowItWorks() {
       className="scroll-mt-14 border-b border-border px-6 py-16 sm:px-10 md:py-24"
     >
       <h2 className="max-w-2xl text-3xl leading-tight sm:text-4xl">
-        Three steps. Zero uploads.
+        Three steps. Zero uploads to us.
       </h2>
       <ol className="mt-10 grid gap-px overflow-hidden rounded-xl border border-border bg-border sm:grid-cols-3">
         {STEPS.map((step, i) => (

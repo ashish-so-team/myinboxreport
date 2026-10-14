@@ -190,8 +190,8 @@ export default function PrivacyPage() {
 
       <Clause id="contact" title="Contact">
         <p>
-          Questions about privacy: {company.contactEmail}. Security reports: the
-          repository&apos;s security policy.
+          Questions about privacy, and security reports: {company.contactEmail}.
+          Please put &ldquo;security&rdquo; in the subject of a security report.
         </p>
       </Clause>
     </LegalPage>

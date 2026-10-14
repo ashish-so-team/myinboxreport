@@ -15,7 +15,7 @@ export function Hero() {
             An AI agent turns your Gmail into a private analytics database:
             schema, categories and dashboards designed around what <em>you</em>{" "}
             want to track. Parsed by your local model or your own API key.
-            Stored in your browser. Nothing else sees it.
+            Stored in your browser. No server of ours ever sees it.
           </p>
           <div className="mt-9 flex animate-rise flex-wrap gap-3 [animation-delay:200ms]">
             <a
