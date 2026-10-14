@@ -1,0 +1,12 @@
+// Static assets only: no `main`, so no worker script exists to run on a
+// request (architecture D1, D10). Built by Workers Builds with
+// `bun install && bun run build`.
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "myinboxreport",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./apps/web/out",
+    "not_found_handling": "404-page"
+  }
+}
